@@ -6,14 +6,15 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.87.0">
-    <title>Blog Template · Bootstrap v5.1</title>
+    <title><?php the_title(); ?> - <?php bloginfo('name'); ?></title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/blog/">
 
     
 
     <!-- Bootstrap core CSS -->
-<link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- CSS only -->
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
 
     <style>
       .bd-placeholder-img {
@@ -35,7 +36,8 @@
     <!-- Custom styles for this template -->
     <link href="https://fonts.googleapis.com/css?family=Playfair&#43;Display:700,900&amp;display=swap" rel="stylesheet">
     <!-- Custom styles for this template -->
-    <link href="blog.css" rel="stylesheet">
+    <link href="<?php echo get_template_directory_uri(); ?>/css/blog.css" rel="stylesheet">
+    <?php wp_head(); ?>
   </head>
   <body>
     
@@ -290,8 +292,6 @@
     <a href="#">Back to top</a>
   </p>
 </footer>
-
-
-    
+<?php wp_footer(); ?>
   </body>
 </html>

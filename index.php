@@ -12,6 +12,18 @@ if ( have_posts() ) :
         <article class="blog-post">
           <h2 class="blog-post-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
           <p class="blog-post-meta"><?php the_date(); ?></p>
+          <?php
+            if ( get_field('fur_colour') ) { ?>
+            <h5>Fur colour: <?php the_field('fur_colour'); ?></h5>
+            <?php
+            }
+          ?>
+          <?php
+          if ( get_field('cat_name') ) { ?>
+          <h5>Name: <?php the_field('cat_name'); ?></h5>
+          <?php
+          }
+        ?>
           <?php if (is_single()) : the_content(); else : the_excerpt(); endif; ?>
         </article>
 <?php    endwhile; 

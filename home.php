@@ -2,9 +2,33 @@
 <main class="container">
   <div class="p-4 p-md-5 mb-4 text-white rounded bg-dark">
     <div class="col-md-6 px-0">
-      <h1 class="display-4 fst-italic">Title of a longer featured blog post</h1>
-      <p class="lead my-3">Multiple lines of text that form the lede, informing new readers quickly and efficiently about what’s most interesting in this post’s contents.</p>
-      <p class="lead mb-0"><a href="#" class="text-white fw-bold">Continue reading...</a></p>
+    <?php
+      // WP_Query arguments
+      $featured_args = array(
+        'posts_per_page'         => '1',
+        'meta_query' => array(
+          array(
+            'key'     => 'featured_post',
+            'value'   => 1,
+          ),
+        ),
+      );
+      
+      // The Query
+      $featured_query = new WP_Query( $featured_args );
+      
+      if ( $featured_query->have_posts() ) {
+        while ( $featured_query->have_posts() ) {
+          $featured_query->the_post();
+    ?>
+    <h2><?php the_title(); ?></h2>
+    <?php the_excerpt(); ?>
+    <?php
+      }} else {
+        //no posts found//
+      }
+      wp_reset_postdata();
+    ?>
     </div>
   </div>
 
